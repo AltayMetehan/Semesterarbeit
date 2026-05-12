@@ -60,12 +60,13 @@
 </script>
 
 <div class="register-container">
-    <h1>Registrieren</h1>
+    <h1>Tonhelfer</h1>
+    <h2>Registrieren</h2>
     {#if message}
         <p class={messageType === "success" ? "message success" : "message error"}>{message}</p>
     {/if}
     
-    <form on:submit|preventDefault={handleSubmit}>
+    <form on:submit={handleSubmit}>
         <div class="form-group">
             <label for="firstname">Vorname</label>
             <input 
@@ -142,7 +143,7 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
-    h1 {
+    h1, h2 {
         text-align: center;
         margin-bottom: 2rem;
     }
