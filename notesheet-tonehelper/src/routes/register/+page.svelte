@@ -130,6 +130,7 @@
         <button type="submit" disabled={loading}>
             {loading ? "Registrierung läuft..." : "Registrieren"}
         </button>
+        <p>Du hast bereits ein Konto? <a href="/login">Hier einloggen</a></p>
     </form>
 </div>
 
