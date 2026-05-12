@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@sveltejs/adapter-netlify": "^6.0.4",
-    "bootstrap": "^5.3.8"
-  }
-}

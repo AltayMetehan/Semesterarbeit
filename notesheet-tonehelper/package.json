@@ -10,14 +10,16 @@
 		"prepare": "svelte-kit sync || echo ''"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-netlify": "^6.0.4",
+		"@sveltestrap/sveltestrap": "^7.1.0",
 		"bcrypt": "^5.1.1",
-		"mongodb": "^6.5.0"
+		"mongodb": "^6.21.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.1",
 		"@sveltejs/kit": "^2.57.0",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
-		"svelte": "^5.55.2",
+		"svelte": "^5.55.5",
 		"vite": "^8.0.7"
 	}
 }
