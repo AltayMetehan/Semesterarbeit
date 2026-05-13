@@ -26,7 +26,7 @@
 
 <style>
     .register-container {
-        max-width: 400px;
+        max-width: 800px;
         margin: 2rem auto;
         padding: 2rem;
         border: 1px solid #ddd;
@@ -67,12 +67,16 @@
     button {
         width: 100%;
         padding: 0.75rem;
-        background-color: #4CAF50;
+        background-color: green;
         color: white;
         border: none;
         border-radius: 4px;
         font-size: 1rem;
         cursor: pointer;
         transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: darkgreen;
     }
 </style>
