@@ -26,8 +26,8 @@
 <style>
     .register-container {
         max-width: 800px;
-        margin-top: 20px;
-        margin-left: 20px;
+        margin: 20px;
+        padding: 2rem;
         border: 1px solid #ddd;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
