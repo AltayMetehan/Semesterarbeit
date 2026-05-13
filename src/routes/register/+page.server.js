@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import db from '$lib/server/db.js';
 
 export const actions = {
@@ -8,7 +9,9 @@ export const actions = {
             nachname: data.get('lastname'),
             email: data.get('email'),
             passwort: data.get('password')
-        }
+        };
+
         await db.createUser(user);
+        throw redirect(303, '/login');
     }
 };
