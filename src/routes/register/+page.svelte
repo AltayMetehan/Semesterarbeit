@@ -1,6 +1,5 @@
-<h1>Tonhelfer</h1>
-
 <div class=register-container>
+    <h1>Tonhelfer</h1>
     <h2>Registrieren</h2>
     <form method="POST" action="?/register">
     <div class="mb-3 form-group">
@@ -27,8 +26,8 @@
 <style>
     .register-container {
         max-width: 800px;
-        margin: 2rem auto;
-        padding: 2rem;
+        margin-top: 20px;
+        margin-left: 20px;
         border: 1px solid #ddd;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
