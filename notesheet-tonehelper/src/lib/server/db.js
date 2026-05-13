@@ -1,33 +1,34 @@
-/* Backend für die Registrierung wurde deaktiviert.
-   Der MongoDB-Zugang funktioniert derzeit nicht, daher ist dieses Projekt jetzt frontend-only.
-*/
+import { MongoClient, ObjectId } from "mongodb";
+import { DB_URI } from "$env/static/private";
+import bcrypt from "bcrypt";
 
-// import { MongoClient, ObjectId } from "mongodb";
-// import { DB_URI } from "$env/static/private";
-// import bcrypt from "bcrypt";
-//
-// const client = new MongoClient(DB_URI);
-//
-// await client.connect();
-// const db = client.db("notesheet");
-//
-// async function createUser(user) {
-//     const users = db.collection("users");
-//
-//     const hashedPassword = await bcrypt.hash(user.password, 10);
-//
-//     const newUser = {
-//         firstname: user.firstname,
-//         lastname: user.lastname,
-//         email: user.email,
-//         password: hashedPassword,
-//         createdAt: new Date()
-//     };
-//
-//     const result = await users.insertOne(newUser);
-//     return result;
-// }
-//
-// export { createUser };
+const client = new MongoClient(DB_URI);
 
-export const backendDisabled = true;
+await client.connect();
+const db = client.db("notesheet");
+
+async function createUser(user) {
+    try {
+        const users = db.collection("users");
+
+        const hashedPassword = await bcrypt.hash(user.passwort, 10);
+
+        const newUser = {
+            vorname: user.vorname,
+            nachname: user.nachname,
+            email: user.email,
+            passwort: hashedPassword,
+            createdAt: new Date()
+        };
+
+        const result = await users.insertOne(newUser);
+        return result;
+    } catch (error) {
+        console.log(error.message);
+        throw new Error("Registrierung fehlgeschlagen");
+    }
+
+    return null;
+}
+
+export default { createUser };
