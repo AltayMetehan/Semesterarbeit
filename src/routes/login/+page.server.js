@@ -27,8 +27,8 @@ export const actions = {
             maxAge: 60 * 60 * 24 * 7 // 1 week
          });
 
-         return { success: true };
          throw redirect(303, '/notesheets');
+         return { success: true };
       } catch (error) {
          return fail(401, { message: "Ungültige Anmeldedaten." });
       }

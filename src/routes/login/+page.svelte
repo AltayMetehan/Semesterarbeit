@@ -56,7 +56,7 @@
                 email = '';
                 password = '';
                 // redirect to home
-                goto('/');
+                goto('/notesheets');
             } else {
                 let data;
                 try {
