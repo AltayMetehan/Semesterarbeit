@@ -1,51 +1,42 @@
-﻿/* Backend für Upload wurde deaktiviert.
-   Der MongoDB-Zugang funktioniert derzeit nicht, daher ist dieses Projekt jetzt frontend-only.
-*/
+﻿import { fail } from "@sveltejs/kit";
+import fs from "fs/promises";
+import path from "path";
+import db, { createNotesheet } from "$lib/server/db";
 
-// import { MongoClient } from "mongodb";
-// import { DB_URI } from "$env/static/private";
-// import fs from "fs";
-// import path from "path";
-//
-// const client = new MongoClient(DB_URI);
-//
-// await client.connect();
-// const db = client.db("notesheet");
-//
-// async function saveUpload(file, writer) {
-//     const uploads = db.collection("uploads");
-//     const result = await uploads.insertOne({
-//         filename: file.name,
-//         writer,
-//         mimeType: file.type,
-//         uploadedAt: new Date()
-//     });
-//     return result;
-// }
-//
-// export const actions = {
-//     upload: async ({ request }) => {
-//         const data = await request.formData();
-//         const file = data.get("file");
-//         const writer = data.get("writer");
-//
-//         if (!file || !writer) {
-//             return {
-//                 status: 400,
-//                 body: { message: "Datei und Songtext Schreiber sind erforderlich" }
-//             };
-//         }
-//
-//         try {
-//             await saveUpload(file, writer);
-//             return { success: true };
-//         } catch (error) {
-//             return {
-//                 status: 500,
-//                 body: { message: "Upload fehlgeschlagen" }
-//             };
-//         }
-//     }
-// };
+export const actions = {
+   default: async ({ request }) => {
+      const data = await request.formData();
+      const file = data.get("file");
+      const writer = data.get("writer");
 
-export const actions = {};
+      if (!file || !writer) {
+         return fail(400, { message: "Datei und Songtext-Schreiber sind erforderlich." });
+      }
+
+      try {
+         const uploadsDir = path.join(process.cwd(), "static", "uploads");
+         await fs.mkdir(uploadsDir, { recursive: true });
+
+         const filename = `${Date.now()}-${file.name}`;
+         const filePath = path.join(uploadsDir, filename);
+
+         const arrayBuffer = await file.arrayBuffer();
+         await fs.writeFile(filePath, Buffer.from(arrayBuffer));
+
+         const body = {
+            filename,
+            originalName: file.name,
+            writer,
+            mimeType: file.type,
+            path: `/uploads/${filename}`
+         };
+
+         const result = await createNotesheet(body);
+
+         return { success: true, id: result.insertedId, body };
+      } catch (error) {
+         console.log(error.message);
+         return fail(500, { message: "Upload fehlgeschlagen." });
+      }
+   }
+};

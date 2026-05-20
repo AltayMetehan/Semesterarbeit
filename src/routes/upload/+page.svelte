@@ -29,16 +29,43 @@
         }
 
         loading = true;
-        await new Promise((resolve) => setTimeout(resolve, 500));
 
-        uploadedFileName = file.name;
-        uploadedWriter = writer.trim();
-        message = 'Notenblatt erfolgreich hochgeladen (Frontend-only).';
-        messageType = 'success';
-        file = null;
-        writer = '';
-        event.target.reset();
-        loading = false;
+        try {
+            const form = new FormData();
+            form.append('file', file);
+            form.append('writer', writer.trim());
+
+            const res = await fetch('/upload', {
+                method: 'POST',
+                body: form
+            });
+
+            loading = false;
+
+            if (res.ok) {
+                const data = await res.json();
+                uploadedFileName = data.body.originalName || file.name;
+                uploadedWriter = data.body.writer;
+                message = 'Notenblatt erfolgreich hochgeladen.';
+                messageType = 'success';
+                file = null;
+                writer = '';
+                event.target.reset();
+            } else {
+                let data;
+                try {
+                    data = await res.json();
+                } catch (e) {
+                    data = null;
+                }
+                message = (data && data.message) ? data.message : 'Upload fehlgeschlagen.';
+                messageType = 'error';
+            }
+        } catch (err) {
+            loading = false;
+            message = 'Netzwerkfehler beim Upload.';
+            messageType = 'error';
+        }
     }
 </script>
 

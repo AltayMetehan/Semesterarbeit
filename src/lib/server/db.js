@@ -54,4 +54,25 @@ async function loginUser(email, password) {
 
     return null;
 }
-export default { createUser, loginUser };
+
+async function createNotesheet(body) {
+    try {
+        const notesheets = db.collection("notesheets");
+
+        const doc = {
+            filename: body.filename,
+            originalName: body.originalName,
+            writer: body.writer,
+            mimeType: body.mimeType,
+            path: body.path,
+            createdAt: new Date()
+        };
+
+        const result = await notesheets.insertOne(doc);
+        return result;
+    } catch (error) {
+        console.log(error.message);
+        throw new Error("Erstellen des Notesheets fehlgeschlagen");
+    }
+}
+export default { createUser, loginUser, createNotesheet };
