@@ -1,10 +1,12 @@
 ﻿<script>
     let file = null;
+    let songName = '';
     let writer = '';
     let message = '';
     let messageType = '';
     let loading = false;
     let uploadedFileName = '';
+    let uploadedSongName = '';
     let uploadedWriter = '';
 
     function handleFileChange(event) {
@@ -22,6 +24,12 @@
             return;
         }
 
+        if (!songName.trim()) {
+            message = 'Bitte gib den Liednamen ein.';
+            messageType = 'error';
+            return;
+        }
+
         if (!writer.trim()) {
             message = 'Bitte gib den Songtext-Schreiber ein.';
             messageType = 'error';
@@ -33,6 +41,7 @@
         try {
             const form = new FormData();
             form.append('file', file);
+            form.append('songName', songName.trim());
             form.append('writer', writer.trim());
 
             const res = await fetch('/upload', {
@@ -45,10 +54,12 @@
             if (res.ok) {
                 const data = await res.json();
                 uploadedFileName = data.body.originalName || file.name;
+                uploadedSongName = data.body.songName || songName;
                 uploadedWriter = data.body.writer;
                 message = 'Notenblatt erfolgreich hochgeladen.';
                 messageType = 'success';
                 file = null;
+                songName = '';
                 writer = '';
                 event.target.reset();
             } else {
@@ -91,6 +102,18 @@
         </div>
 
         <div class="form-group">
+            <label for="songName">Liedname</label>
+            <input
+                type="text"
+                id="songName"
+                name="songName"
+                bind:value={songName}
+                required
+                placeholder="Name des Liedes"
+            />
+        </div>
+
+        <div class="form-group">
             <label for="writer">Songtext Schreiber</label>
             <input
                 type="text"
@@ -111,6 +134,7 @@
         <div class="result-card">
             <h2>Hochgeladene Datei</h2>
             <p><strong>Datei:</strong> {uploadedFileName}</p>
+            <p><strong>Liedname:</strong> {uploadedSongName}</p>
             <p><strong>Songtext Schreiber:</strong> {uploadedWriter}</p>
         </div>
     {/if}

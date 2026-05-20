@@ -8,9 +8,10 @@ export const actions = {
       const data = await request.formData();
       const file = data.get("file");
       const writer = data.get("writer");
+      const songName = data.get("songName");
 
-      if (!file || !writer) {
-         return fail(400, { message: "Datei und Songtext-Schreiber sind erforderlich." });
+      if (!file || !writer || !songName) {
+         return fail(400, { message: "Datei, Liedname und Songtext-Schreiber sind erforderlich." });
       }
 
       try {
@@ -26,6 +27,7 @@ export const actions = {
          const body = {
             filename,
             originalName: file.name,
+            songName,
             writer,
             mimeType: file.type,
             path: `/uploads/${filename}`

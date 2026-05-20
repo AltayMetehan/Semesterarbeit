@@ -62,6 +62,7 @@ async function createNotesheet(body) {
         const doc = {
             filename: body.filename,
             originalName: body.originalName,
+            songName: body.songName,
             writer: body.writer,
             mimeType: body.mimeType,
             path: body.path,
