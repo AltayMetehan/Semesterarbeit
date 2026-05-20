@@ -83,6 +83,7 @@
 <div class="upload-container">
     <h1>Tonhelfer</h1>
     <h2>Notenblatt hochladen</h2>
+    <p><a href="/notesheets">Zurück zur Startseite</a></p>
 
     {#if message}
         <p class={messageType === 'success' ? 'message success' : 'message error'}>{message}</p>
