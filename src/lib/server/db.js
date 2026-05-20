@@ -76,4 +76,25 @@ async function createNotesheet(body) {
         throw new Error("Erstellen des Notesheets fehlgeschlagen");
     }
 }
-export default { createUser, loginUser, createNotesheet };
+
+async function getNotesheets() {
+    let notesheets = [];
+    try {
+        const collection = db.collection("notesheets");
+
+        // You can specify a query/filter here
+        // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
+        const query = {};
+
+        // Get all objects that match the query
+        notesheets = await collection.find(query).toArray();
+        notesheets.forEach((notesheet) => {
+            notesheet._id = notesheet._id.toString(); // convert ObjectId to String
+        });
+    } catch (error) {
+        console.log(error);
+        // TODO: errorhandling
+    }
+    return notesheets;
+}
+export default { createUser, loginUser, createNotesheet, getNotesheets };
