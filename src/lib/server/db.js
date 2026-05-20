@@ -31,4 +31,27 @@ async function createUser(user) {
     return null;
 }
 
-export default { createUser };
+async function loginUser(email, password) {
+    try {
+        const users = db.collection("users");
+
+        const user = await users.findOne({ email });
+        if (!user) {
+            throw new Error("Ungültige Anmeldedaten");
+        }
+
+        const valid = await bcrypt.compare(password, user.passwort);
+        if (!valid) {
+            throw new Error("Ungültige Anmeldedaten");
+        }
+
+        const { passwort, ...rest } = user;
+        return rest;
+    } catch (error) {
+        console.log(error.message);
+        throw new Error("Anmeldung fehlgeschlagen");
+    }
+
+    return null;
+}
+export default { createUser, loginUser };

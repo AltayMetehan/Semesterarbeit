@@ -1,4 +1,6 @@
 ﻿<script>
+    import { goto } from '$app/navigation';
+
     let email = '';
     let password = '';
     let message = '';
@@ -36,13 +38,40 @@
             return;
         }
 
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        try {
+            const body = new URLSearchParams();
+            body.append('email', email);
+            body.append('password', password);
 
-        message = 'Login erfolgreich (Frontend-only).';
-        messageType = 'success';
-        email = '';
-        password = '';
-        loading = false;
+            const res = await fetch('/login', {
+                method: 'POST',
+                body
+            });
+
+            loading = false;
+
+            if (res.ok) {
+                message = 'Login erfolgreich.';
+                messageType = 'success';
+                email = '';
+                password = '';
+                // redirect to home
+                goto('/');
+            } else {
+                let data;
+                try {
+                    data = await res.json();
+                } catch (e) {
+                    data = null;
+                }
+                message = (data && data.message) ? data.message : 'Login fehlgeschlagen.';
+                messageType = 'error';
+            }
+        } catch (err) {
+            loading = false;
+            message = 'Netzwerkfehler beim Login.';
+            messageType = 'error';
+        }
     }
 </script>
 

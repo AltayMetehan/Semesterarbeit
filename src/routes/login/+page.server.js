@@ -1,46 +1,34 @@
 ﻿/* Backend für Login wurde deaktiviert.
    Der MongoDB-Zugang funktioniert derzeit nicht, daher ist dieses Projekt jetzt frontend-only.
 */
+import { fail } from "@sveltejs/kit";
+import db from "$lib/server/db";
 
-// import { MongoClient } from "mongodb";
-// import { DB_URI } from "$env/static/private";
-// import bcrypt from "bcrypt";
-//
-// const client = new MongoClient(DB_URI);
-//
-// await client.connect();
-// const db = client.db("notesheet");
-//
-// async function loginUser(email, password) {
-//     const users = db.collection("users");
-//     const user = await users.findOne({ email });
-//     if (!user) {
-//         throw new Error("Ungültige Anmeldedaten");
-//     }
-//     const valid = await bcrypt.compare(password, user.password);
-//     if (!valid) {
-//         throw new Error("Ungültige Anmeldedaten");
-//     }
-//     return user;
-// }
-//
-// export const actions = {
-//     login: async ({ request }) => {
-//         const data = await request.formData();
-//         const email = data.get("email");
-//         const password = data.get("password");
-//
-//         if (!email || !password) {
-//             return { status: 400, body: { message: "Email und Passwort sind erforderlich" } };
-//         }
-//
-//         try {
-//             await loginUser(email, password);
-//             return { success: true };
-//         } catch (error) {
-//             return { status: 401, body: { message: error.message } };
-//         }
-//     }
-// };
+export const actions = {
+   default: async ({ request, cookies }) => {
+      const data = await request.formData();
+      const email = data.get("email");
+      const password = data.get("password");
 
-export const actions = {};
+      if (!email || !password) {
+         return fail(400, { message: "Email und Passwort sind erforderlich." });
+      }
+
+      try {
+         const user = await db.loginUser(email, password);
+
+         // Set a simple session cookie (server-only)
+         const sessionValue = user._id ? String(user._id) : user.email;
+         cookies.set("session", sessionValue, {
+            path: "/",
+            httpOnly: true,
+            sameSite: "lax",
+            maxAge: 60 * 60 * 24 * 7 // 1 week
+         });
+
+         return { success: true };
+      } catch (error) {
+         return fail(401, { message: "Ungültige Anmeldedaten." });
+      }
+   }
+};
