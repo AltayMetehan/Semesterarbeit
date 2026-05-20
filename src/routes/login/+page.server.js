@@ -2,6 +2,7 @@
    Der MongoDB-Zugang funktioniert derzeit nicht, daher ist dieses Projekt jetzt frontend-only.
 */
 import { fail } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 import db from "$lib/server/db";
 
 export const actions = {
@@ -27,6 +28,7 @@ export const actions = {
          });
 
          return { success: true };
+         throw redirect(303, '/notesheets');
       } catch (error) {
          return fail(401, { message: "Ungültige Anmeldedaten." });
       }
