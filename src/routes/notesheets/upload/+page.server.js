@@ -25,12 +25,12 @@ export const actions = {
          await fs.writeFile(filePath, Buffer.from(arrayBuffer));
 
          const body = {
-            filename,
+            filename: filename,
             originalName: file.name,
-            songName,
-            writer,
+            songName: songName,
+            writer: writer,
             mimeType: file.type,
-            path: `/uploads/${filename}`
+            path: `/notesheets/${filename}`
          };
 
          const result = await createNotesheet(body);

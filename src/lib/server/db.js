@@ -1,6 +1,13 @@
 import { MongoClient, ObjectId } from "mongodb";
 import { DB_URI } from "$env/static/private";
 import bcrypt from "bcrypt";
+import dns from "node:dns/promises";
+
+// wurde hinzugefügt, da es sonst zu Problemen mit der DNS-Auflösung kommt
+// Lokaler Fehler: Error: querySrv ECONNREFUSED _mongodb._tcp.topic2.idvbvcd.mongodb.net 
+//                    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)
+dns.setServers(["1.1.1.1"]);
+console.log(dns.getServers());
 
 const client = new MongoClient(DB_URI);
 
@@ -82,18 +89,15 @@ async function getNotesheets() {
     try {
         const collection = db.collection("notesheets");
 
-        // You can specify a query/filter here
-        // See https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/query-document/
         const query = {};
 
-        // Get all objects that match the query
         notesheets = await collection.find(query).toArray();
         notesheets.forEach((notesheet) => {
-            notesheet._id = notesheet._id.toString(); // convert ObjectId to String
+            notesheet._id = notesheet._id.toString();
         });
     } catch (error) {
-        console.log(error);
-        // TODO: errorhandling
+        console.log(error.message);
+        throw new Error("Abrufen der Notesheets fehlgeschlagen");
     }
     return notesheets;
 }
