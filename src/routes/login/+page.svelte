@@ -56,6 +56,7 @@
                 email = '';
                 password = '';
                 // redirect to home
+                await new Promise(resolve => setTimeout(resolve, 1200));
                 goto('/notesheets');
             } else {
                 let data;
@@ -106,6 +107,15 @@
                 required
                 placeholder="Passwort eingeben"
             />
+        </div>
+
+        <div class="hint">
+            <p><strong>Hinweis:</strong></p>
+            <ul>
+                <li>Nutze die E-Mail-Adresse, mit der du dich registriert hast.</li>
+                <li>Das Passwort muss mindestens 6 Zeichen lang sein.</li>
+                <li>Falls du dein Passwort vergessen hast, registriere dich neu.</li>
+            </ul>
         </div>
 
         <button type="submit" disabled={loading}>
@@ -192,5 +202,29 @@
     button:disabled {
         background-color: #cccccc;
         cursor: not-allowed;
+    }
+
+    .hint {
+        margin-bottom: 1.5rem;
+        padding: 0.9rem 1rem;
+        background: #f5faff;
+        border: 1px solid #cfe8ff;
+        border-radius: 6px;
+        color: #1e3a8a;
+        font-size: 0.95rem;
+    }
+
+    .hint p {
+        margin: 0 0 0.5rem;
+        font-weight: 600;
+    }
+
+    .hint ul {
+        margin: 0;
+        padding-left: 1.25rem;
+    }
+
+    .hint li {
+        margin-bottom: 0.35rem;
     }
 </style>

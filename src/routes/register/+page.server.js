@@ -1,8 +1,8 @@
-import { redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import db from '$lib/server/db.js';
 
 export const actions = {
-    register: async ({ request }) => {
+    default: async ({ request }) => {
         const data = await request.formData();
         const user = {
             vorname: data.get('firstname'),
@@ -11,7 +11,15 @@ export const actions = {
             passwort: data.get('password')
         };
 
-        await db.createUser(user);
-        throw redirect(303, '/login');
+        if (!user.vorname || !user.nachname || !user.email || !user.passwort) {
+            return fail(400, { message: 'Alle Felder sind erforderlich.' });
+        }
+
+        try {
+            await db.createUser(user);
+            return { success: true };
+        } catch (error) {
+            return fail(500, { message: 'Registrierung fehlgeschlagen.' });
+        }
     }
 };
