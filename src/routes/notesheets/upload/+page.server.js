@@ -1,7 +1,7 @@
 ﻿import { fail } from "@sveltejs/kit";
 import fs from "fs/promises";
 import path from "path";
-import db, { createNotesheet } from "$lib/server/db";
+import db from "$lib/server/db";
 
 export const actions = {
    default: async ({ request }) => {
@@ -33,7 +33,7 @@ export const actions = {
             path: `/notesheets/${filename}`
          };
 
-         const result = await createNotesheet(body);
+         const result = await db.createNotesheet(body);
 
          return { success: true, id: result.insertedId, body };
       } catch (error) {
