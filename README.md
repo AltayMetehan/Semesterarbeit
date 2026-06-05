@@ -91,29 +91,39 @@ Dokumentiert Erweiterungen über den Mindestumfang hinaus.
 - **Referenz:** Keine Referenz im Moment
 - **Aus Evaluation abgeleitet?:** Nein
 
-## 5. Projektorganisation [Optional]
+## 5. Projektorganisation
 Beispiele:
-- **Repository & Struktur:** _[Link; kurze Strukturübersicht]_  
-- **Issue-Management:** _[Vorgehen kurz beschreiben]_  
-- **Commit-Praxis:** _[z. B. sprechende Commits]_
+- **Repository & Struktur:** Hier ist der Link zum Repository: https://github.com/AltayMetehan/Semesterarbeit/tree/main  
+Branches:  
+![Branches vom Projekt](static/readme-pictures/Branches.png "Branches vom Projekt")  
+Struktur des Projekts:  
+![Struktur des Projekts](static/readme-pictures/Struktur%20Projekt.png "Struktur des Projekts")
+- **Issue-Management:** Bei Problemen werden Issues aufgezeichnet. Es ist wie ein Plan, wie man vorgeht und was gemacht werden soll.  
+- **Commit-Praxis:** Bei den Commits wurde ein kurzer Titel hinzugefügt und was hinzugefügt oder weggenommen wurde. Hier ist ein Beispiel:  
+![Commit-Praxis](static/readme-pictures/Commit.png "Commit-Praxis")
 
 ## 6. KI-Deklaration
 Die folgende Deklaration ist verpflichtend und beschreibt den Einsatz von KI im Projekt.
 
 ### 6.1 KI-Tools
-- **Eingesetzte Tools**: _[z. B. Copilot, ChatGPT, Claude, lokale Modelle; Version/Variante wenn bekannt]_
-- **Zweck & Umfang**: _[wie, wofür und in welchem Ausmass wurde KI eingesetzt (z. B. Textentwürfe, Codevorschläge, Tests, Refactoring); welche Teile stammen (ganz/teilweise) aus KI-Unterstützung?]_
-- **Eigene Leistung (Abgrenzung):** _[was ist eigenständig erarbeitet/überarbeitet worden?]_
+- **Eingesetzte Tools**: 
+  - Perplexity Claude 4.6 Thinking 
+  - Github Copilot Free
+- **Zweck & Umfang**: 
+  - Perplexity Claude 4.6 Thinking wurde benutzt, um den Text zu verbessern.
+  - Github Copilot Free wurde benutzt für Inline Code Vorschläge. Es wurde nicht alles eins zu eins implementiert, aber es ist inspiriert. Das Design wurde zum Teil von KI übernommen.
+  - KI wurde als Inspiration benutzt und auch für das Design und wurde teils auch übernommen.
+- **Eigene Leistung (Abgrenzung):** Die Strukturierung des Projektes und die Basis wurde von mir selbst erstellt. KI wurde als Inspiration benutzt durch Inline Vorschläge. Resgistrierung und Anmeldung genau so wie Upload und Notenblätter Liste wurde selbst erstellt.
 
 ### 6.2 Prompt-Vorgehen
-_[Überlegungen zu Prompt-Vorgehen, Qualität und Urheberrecht/Quellen. Wie wurde beim Prompting vorgegangen? Zu beschreiben ist die grundlegende Vorgehensweise. Einzelne, konkrete Prompts sollten höchstens als Beispiele aufgeführt werden. ]_
+- Um den Text zu verbessern habe ich den Auftrag aufgeschrieben, was ich bisher reingeschreben habe und wie die Struktur sein soll. Danach hab ich es gebeten formell umzuschreiben, so dass es in eine Projektdokumentation passt.
+- Für den Code hatte ich Inline Vorschläge an. Ich habe diese für Inspiration benutzt. In Visual Studio Code Chat habe ich gefragt, wie man eine Box mit Schatten macht und den Rest selbst designt. So wurde die KI für Code benutzt. Für Code wurde mehr gefragt, wie man es umsetzen könnte.  
 
 ### 6.3 Reflexion
 _[Nutzen, Grenzen, Risiken/Qualitätssicherung, ...]_
 
-## 7. Anhang [Optional]
+## 7. Anhang
 Beispiele:
-- **Quellen:** _[verwendete Vorlagen/Assets/Modelle; Lizenz/Urheberrecht; ...]_
-- **Testskript & Materialien:** _[Link/Datei]_  
-- **Rohdaten/Auswertung:** _[Link/Datei]_  
+- **Quellen:** 
+  - Problem mit Backend Verbindung Lösung: https://www.mongodb.com/community/forums/t/error-querysrv-econnrefused-mongodb/259042/3
 
