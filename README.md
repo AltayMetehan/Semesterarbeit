@@ -79,26 +79,17 @@ Fasst die technische Realisierung zusammen.
 - **Zusammenfassung der Resultate:** _[Wichtigste Erkenntnisse; 2-4 Sätze]_  
 - **Abgeleitete Verbesserungen:** _[Anforderungen, die als nächstes umgesetzt werden sollten, priorisiert, kurz begründet; falls Verbesserungen im Prototyp konkret umgesetzt wurden: In Kap. 4 dokumentieren]_  
 
-## 4. Erweiterungen [Optional]
+## 4. Erweiterungen
 Dokumentiert Erweiterungen über den Mindestumfang hinaus.
-> **Hinweis:** Jede Erweiterung ist separat nach dem folgenden Schema zu beschreiben.
 
-### _[4.x Kurzbeschreibung / Titel]_  
-- **Beschreibung & Nutzen:** _[Was wurde erweitert? Warum?]_  
-- **Wo umgesetzt:** _[Wie und wo wurde es gemacht? Frontend, Backend, Datenbank?]_  
-- **Referenz:** _[Wo wird die Erweiterung auch noch beschrieben, z.B. Screenshot oder Beschreibung in einem anderen Kapitel]_  
-- **Aus Evaluation abgeleitet?:** _[Wurde diese Erweiterung als Folge eines in der Evaluation identifizierten Issues implementiert?]_  
-
-> Das folgende **Beispiel** wurde bewusst kurz gehalten. Erweiterungen dürfen auch ausführlicher beschrieben werden.
-
-### 4.1 Tabelle nach Kategorien filtern
-- **Beschreibung & Nutzen:** Tabelle X kann nach Kategorie gefiltert werden, weil User typischerweise nur an einer bestimmten Kategorie interessiert sind.  
+### 4.1 Resgistrierung/Anmeldung
+- **Beschreibung & Nutzen:** Wenn man die Noten gespeichert haben will, kann man sich jetzt registrieren und anmelden 
 - **Wo umgesetzt:** 
-  - **Frontend:** Tabelle mit Dropdown in Datei ...
-  - **Backend:** Form Action ... in Datei ...
-  - **Datenbank:** MongoDB-Query in Datei ...
-- **Referenz:** Screenshot in Kap. x.y
-- **Aus Evaluation abgeleitet?:** Ja, Issue x.y
+  - **Frontend:** Resgitrierungs- und Anmeldungsseite
+  - **Backend:** User Erstellung im Backend mit Namen, Email und Passwort
+  - **Datenbank:** Neue Collection in der MongoDB. Die Liste hat einen Lookup zum Nutzer
+- **Referenz:** Keine Referenz im Moment
+- **Aus Evaluation abgeleitet?:** Nein
 
 ## 5. Projektorganisation [Optional]
 Beispiele:
