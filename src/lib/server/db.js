@@ -62,6 +62,26 @@ async function loginUser(email, password) {
     return null;
 }
 
+async function getNotesheet(id) {
+    let notesheet = null;
+    
+    try{
+        const collection = db.collection("notesheets");
+        const query = { _id: new ObjectId(id) };
+        notesheet = await collection.findOne(query);
+
+        if (!notesheet) {
+            console.log("No notesheet with id " + id);
+        } else {
+            notesheet._id = notesheet._id.toString();
+        }
+    } catch (error) {
+        console.log(error.message);
+        throw new Error("Abrufen des Notesheets fehlgeschlagen");
+    }
+    return notesheet;
+}
+
 async function createNotesheet(body) {
     try {
         const notesheets = db.collection("notesheets");
@@ -101,4 +121,4 @@ async function getNotesheets() {
     }
     return notesheets;
 }
-export default { createUser, loginUser, createNotesheet, getNotesheets };
+export default { createUser, loginUser, createNotesheet, getNotesheets, getNotesheet };

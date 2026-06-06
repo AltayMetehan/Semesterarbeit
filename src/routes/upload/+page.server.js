@@ -30,7 +30,7 @@ export const actions = {
             songName: songName,
             writer: writer,
             mimeType: file.type,
-            path: `/notesheets/${filename}`
+            path: `/${filename}`
          };
 
          const result = await db.createNotesheet(body);
