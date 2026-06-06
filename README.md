@@ -71,14 +71,22 @@ Die Durchführung erfolgt phasenbasiert; dokumentieren Sie die wichtigsten Ergeb
 
 #### 3.4.1. Entwurf (Design)
 Beschreibt die Gestaltung und Interaktion.
-> **Hinweis:** Hier wird der **Prototyp** beschrieben, nicht das **Mockup**.
 - **Informationsarchitektur:** Das Projekt geht um den Tonhelfer und die Liste ist die Hauptseite. Durch die Bootstrap Navigation kann man zur Registration gehen und danach sich dort auch anmelden. Durch Knopfdruck kommt man zum Upload oder auch zurück zur Liste. Die Detail Seite zeigt dann das Notenblatt und bietet auch die Tonhilfe und mit Knopfdruck kommt man immer zurück.
-- **User Interface Design:** _[wichtige Screens: Screenshots mit kurzen Erläuterungen]_  
+- **User Interface Design:** 
+  - Upload:  
+  ![Upload](static/readme-pictures/Upload.png "Upload")  
+  Hier ist die Upload Seite, in der man die PDFs hochladen kann. Sie werden dann in der Liste angezeigt. Es muss alles ausgefüllt werden.
+  - Liste:
+    ![Liste](static/readme-pictures/Liste.png "Liste")  
+    Hier ist die Liste dargestellt, wo man Zugriff auf die Notenblätter hat. Auf Klick auf dem Titel kommt man zur Hauptseite.
+  - Detail:  
+  ![Detail](static/readme-pictures/Detail.png "Detail")  
+  Hier ist die Detail Übersicht, in der man die Details sieht und den Tonhelfer benutzen kann auf Klick auf das PDF.
 - **Designentscheidungen:** Das Design wird sehr simpel gehalten, da ein Notenblatt schon sehr viele Details haben kann und die Seite soll nicht zu sehr designt sein. Ich halte es auch schwarz, weiss ausser den Hintergrund. Alles passt zum Notenblatt Thema und der Hintergrund braucht eine andere helle weissliche (Beige) Farbe, weil es sonst unübersichtlich wird.
 
 #### 3.4.2. Umsetzung (Technik)
 Fasst die technische Realisierung zusammen.
-- **Technologie-Stack:** Es wird SvelteKit benutzt und alles bleibt im Standard. Es wird goto benutzt, um von Registrierung zu Login zu leiten und von Login zur Liste. Eine Ausnahme wäre es den DNS zu verändern, weil es lokal sonst Probleme macht. Für das Backend wird MongoDB benutzt.
+- **Technologie-Stack:** Es wird SvelteKit benutzt und alles bleibt im Standard. Es wird goto benutzt, um von Registrierung zu Login zu leiten und von Login zur Liste. Es wird auch die DNS verändert, weil es lokal sonst Probleme macht. Zudem wird die Bibliothek Tone benutzt für die Notenanalyse und Ausgabe. Es wird auch pdfjs-dist benutzt, um PDFs lesen zu können. Von Svelte wird auch onMount und tick benutzt, damit das Laden des PDFs schneller und ohne Probleme geht. Für das Backend wird MongoDB benutzt.
 - **Tooling:** In der IDE von Visual Studio Code wird die GitHub Erweiterung benutzt. Für das Backend wird MongoDB benutzt. Die Backend Eintröge werden in ein Cluster gemacht und der Connection String und mit MongoDB Compass wird dieses überprüft. 
 - **Struktur & Komponenten:** Es gibt die Seiten Upload, Register, Login, Home also die Liste und die Detailseite. Die Routen sind dementsprechend so kontruiert. Es gibt eine wichtige Komponente, die die Liste darstellen lassen kann. Diese werden auch als Props gespeichert.
 - **Daten & Schnittstellen:** Daten werden in MongoDB in einem Cluster gespeichert. Mit der Connection String verbindet man sich. In db.js werden alle Daten erstellt und geholt.
@@ -113,7 +121,8 @@ Dokumentiert Erweiterungen über den Mindestumfang hinaus.
   - **Frontend:** Resgitrierungs- und Anmeldungsseite
   - **Backend:** User Erstellung im Backend mit Namen, Email und Passwort
   - **Datenbank:** Neue Collection in der MongoDB. Die Liste hat einen Lookup zum Nutzer
-- **Referenz:** Keine Referenz im Moment
+- **Referenz:**  
+![Register](static/readme-pictures/Register.png "Resgitrieren")
 - **Aus Evaluation abgeleitet?:** Nein
 
 ## 5. Projektorganisation
@@ -138,6 +147,7 @@ Die folgende Deklaration ist verpflichtend und beschreibt den Einsatz von KI im 
   - Perplexity Claude 4.6 Thinking wurde benutzt, um den Text zu verbessern.
   - Github Copilot Free wurde benutzt für Inline Code Vorschläge. Es wurde nicht alles eins zu eins implementiert, aber es ist inspiriert. Das Design wurde zum Teil von KI übernommen.
   - KI wurde als Inspiration benutzt und auch für das Design und wurde teils auch übernommen.
+  - Für den Tonhelfer und die Notenanalyse und PDFs lesen wurde komplett KI benutzt für die Umsetzung
 - **Eigene Leistung (Abgrenzung):** Die Strukturierung des Projektes und die Basis wurde von mir selbst erstellt. KI wurde als Inspiration benutzt durch Inline Vorschläge. Resgistrierung und Anmeldung genau so wie Upload und Notenblätter Liste wurde selbst erstellt.
 
 ### 6.2 Prompt-Vorgehen
@@ -145,7 +155,7 @@ Die folgende Deklaration ist verpflichtend und beschreibt den Einsatz von KI im 
 - Für den Code hatte ich Inline Vorschläge an. Ich habe diese für Inspiration benutzt. In Visual Studio Code Chat habe ich gefragt, wie man eine Box mit Schatten macht und den Rest selbst designt. So wurde die KI für Code benutzt. Für Code wurde mehr gefragt, wie man es umsetzen könnte.  
 
 ### 6.3 Reflexion
-_[Nutzen, Grenzen, Risiken/Qualitätssicherung, ...]_
+Dieses Projekt war knapp und deswegen musste ich KI für den letzten Schliff komplett benutzen. Nächstes Mal muss ich öfters um Hilfe bitten bei technischen Problemen, damit ich nicht in solche Schwierigkeiten gerate und alles von KI machen lasse. Die Qualität ist auch nicht das Beste, da es noch bei Klicks Fehler macht bei der Notenausgabe. Inline Codes als Inspiration nutzen hilft beim codieren immens und macht es schneller.
 
 ## 7. Anhang
 Beispiele:
