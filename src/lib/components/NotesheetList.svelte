@@ -4,21 +4,18 @@
 
 <div class="notesheet-card">
     <div class="notesheet-meta">
-        <span class="notesheet-date">Aufgemacht {notesheet.createdAt}</span>
+        <span class="notesheet-date">Hochgeladen am {notesheet.createdAt}</span>
     </div>
-    <div class="notesheet-content">
-        <a class="notesheet-title" href="/notesheets/{notesheet._id}">{notesheet.songname}</a>
-        <p class="notesheet-writer">{notesheet.songwriter}</p>
-    </div>
-    <div class="notesheet-action" aria-hidden="true">›</div>
+    <a class="notesheet-title" href="/{notesheet._id}">{notesheet.songName}</a>
+    <p class="notesheet-writer">{notesheet.writer}</p>
 </div>
 
 <style>
     .notesheet-card {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr;
         gap: 0.75rem;
-        align-items: center;
+        align-items: start;
         background: #ffffff;
         border: 1px solid #e5e7eb;
         border-radius: 12px;
@@ -37,7 +34,8 @@
     .notesheet-meta {
         font-size: 0.85rem;
         color: #6b7280;
-        margin-bottom: 0.25rem;
+        margin: 0;
+        grid-column: 1;
     }
 
     .notesheet-title {
@@ -46,7 +44,8 @@
         font-weight: 700;
         color: #111827;
         text-decoration: none;
-        margin-bottom: 0.25rem;
+        margin: 0;
+        grid-column: 1;
     }
 
     .notesheet-title:hover {
@@ -58,26 +57,13 @@
         margin: 0;
         font-size: 0.95rem;
         color: #374151;
-    }
-
-    .notesheet-action {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.5rem;
-        color: #9ca3af;
+        grid-column: 1;
     }
 
     @media (max-width: 640px) {
         .notesheet-card {
             grid-template-columns: 1fr;
             padding: 1rem;
-        }
-
-        .notesheet-action {
-            justify-self: end;
         }
     }
 </style>
