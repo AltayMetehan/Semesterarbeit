@@ -14,6 +14,6 @@
             </NotesheetList>
         </div>
     {/each}
-    <button class="btn btn-primary" on:click={() => window.location.href = '/notesheets/upload'}>Neues Notenblatt erstellen</button>
+    <button class="btn btn-primary" on:click={() => window.location.href = '/upload'}>Neues Notenblatt erstellen</button>
 </div>
 

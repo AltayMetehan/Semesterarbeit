@@ -35,7 +35,7 @@ export const actions = {
 
          const result = await db.createNotesheet(body);
 
-         return { success: true, id: result.insertedId, body };
+         return { success: true };
       } catch (error) {
          console.log(error.message);
          return fail(500, { message: "Upload fehlgeschlagen." });
