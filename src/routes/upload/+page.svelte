@@ -1,13 +1,13 @@
 ﻿<script>
     let file = null;
-    let songName = '';
-    let writer = '';
-    let message = '';
-    let messageType = '';
-    let loading = false;
-    let uploadedFileName = '';
-    let uploadedSongName = '';
-    let uploadedWriter = '';
+    let songName = $state('');
+    let writer = $state('');
+    let message = $state('');
+    let messageType = $state('');
+    let loading = $state(false);
+    let uploadedFileName = $state('');
+    let uploadedSongName = $state('');
+    let uploadedWriter = $state('');
 
     function handleFileChange(event) {
         file = event.target.files[0] ?? null;
@@ -83,7 +83,7 @@
 <div class="upload-container">
     <h1>Tonhelfer</h1>
     <h2>Notenblatt hochladen</h2>
-    <p><a href="/notesheets">Zurück zur Startseite</a></p>
+    <p><a href="/">Zurück zur Startseite</a></p>
 
     {#if message}
         <p class={messageType === 'success' ? 'message success' : 'message error'}>{message}</p>
