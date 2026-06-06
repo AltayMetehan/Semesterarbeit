@@ -8,7 +8,7 @@
   data-bs-theme="dark"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" href="/register">Tonhelfer</a>
+    <a class="navbar-brand" href="/">Tonhelfer</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -23,7 +23,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/notesheets">Notenblätter</a>
+          <a class="nav-link" aria-current="page" href="/">Notenblätter</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Registrieren</a>
         </li>
       </ul>
     </div>
