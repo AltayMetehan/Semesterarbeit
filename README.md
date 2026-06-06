@@ -15,8 +15,6 @@
 6. [KI-Deklaration](#6-ki-deklaration)
 7. [Anhang [Optional]](#7-anhang-optional)
 
-> **Hinweis:** Massgeblich sind die im **Unterricht** und auf **Moodle** kommunizierten Anforderungen.
-
 <!-- WICHTIG: DIE KAPITELSTRUKTUR DARF NICHT VERÄNDERT WERDEN! -->
 
 <!-- Diese Vorlage ist für eine README.md im Repository gedacht. Abschnitte mit [Optional] können weggelassen werden, wenn in den Übungen nichts anderes verlangt wird. -->
@@ -39,17 +37,35 @@ Die Applikation ermöglicht es Nutzenden, Notenblätter hochzuladen, in einer Li
 Die Durchführung erfolgt phasenbasiert; dokumentieren Sie die wichtigsten Ergebnisse je Phase.
 
 ### 3.1 Understand & Define
-- **Zielgruppenverständnis:** _[Problemraumanalyse, Recherche, (Proto-)Personas]_
-- **Wesentliche Erkenntnisse:** _[Stichpunkte]_
+- **Zielgruppenverständnis:**
+  - Problemraumanalyse:  ![Problemraum-Analyse](static/readme-pictures/Prblemraumanalyse.png "Problemraum-Analyse")
+  - Recherche: 
+    - Wie funktioniert es?: Es gibt schon einige Apps und KI-Unterstützung oder man kann das Piano selbst abspielen lassen.
+    - Was gibt es schon? Existierende Lösungsansätze?: Man kann seine eigenen Tonaufnahmen machen und Apps benutzen, die man auf Google sofort findet, und KI-Hilfe gibt es auch noch.
+    - Was kann verbessert werden?: Die Noten geben auf Druck einen Ton ab und man könnte die Musik über YouTube abspielen lassen.
+  - Proto-Persona:  ![Proto-Persona-Philipp](static/readme-pictures/Philipp_ProPer.png "Proto-Persona Philipp Buchmann")  ![Proto-Persona_Maria](static/readme-pictures/Maria_ProPer.png "Proto Persona Maria Feldblume")
+  - User Stories: 
+    - Als Sänger möchte ich ein Notenblatt hochladen und Ton abspielen, damit ich zuhause auch ohne Instrumente Tonhilfe bekomme.
+    - Als Chormitglied will ich einen Teil meines Notenblattes abspielen, damit ich die Notenblätter zuhause trainieren kann
+    - Als Chorleiter möchte ich meine Chormitglieder auf diese Webseite weisen, damit ich entlastet werde Aufnahmen für Tonhilfe zu machen.
+- **Wesentliche Erkenntnisse:**
+  - Viele Hobbysingende und Chormitglieder haben zuhause keinen Zugang zu einem Instrument oder Chorleiter, um Töne beim Üben zu überprüfen
+  - Bestehende Lösungen (Piano-Apps, eigene Tonaufnahmen, KI-Tools) decken den Bedarf nur unvollständig ab – eine direkt anklickbare Notenhilfe fehlt am Markt
+  - Nutzende ohne musiktheoretische Vorkenntnisse benötigen eine einfache, intuitive Bedienung, die auch auf dem Smartphone funktioniert
+  - Chorleiter und Gesangslehrer sind durch individuelle Tonaufnahmen für Schüler stark belastet – eine App könnte diese Aufgabe übernehmen
+  - Die YouTube-Integration wird als wertvolle Ergänzung wahrgenommen, um die gesamte Melodie eines unbekannten Stücks anhören zu können
+  - Datenschutz und Copyright sind relevante Bedenken, insbesondere beim Hochladen und Anzeigen von Notenblättern
 
 ### 3.2 Sketch
-- **Variantenüberblick:** _[kurz]_
-- **Skizzen:** _[Mehrere Varianten; Unterschiede kurz dokumentieren.]_
+- **Variantenüberblick:** Die Skizzen Varianten zeigen mögliche Prototypen für dieses Projekt, aber die Basis mit den Noten zeigen und abspielen steht immer gleich. Der Rest ist eine weitere Idee, die nicht sein muss.
+- **Skizzen:**  ![Skizze](static/readme-pictures/Skizze.png "Skizzen")  Der Unterschied zwischen den Skizzen liegt bei den Funktionen und Ideen. Jede Skizze hat eine neue Idee, wie Stimmen hören oder Musik abspielen oder per Klick oder per Abschnitt abspielen.
 
 ### 3.3 Decide
-- **Gewählte Variante & Begründung:** _[Entscheidkriterien nennen]_  
-- **End-to-End-Ablauf:** _[Beschreibung inkl. User Journey Map]_  
-- **Mockup:** _[URL, z. B. Figma; Screenshots mit kurzen Beschreibungen]_  
+- **Gewählte Variante & Begründung:** Die gewählte Variante wurde hier nur zum Teil skizziert. Als Zusatz kann man die Musik abspielen und man kann per Klick den Ton abspielen. Das Produkt soll simpel gehalten werden und die Stimmen sollten nicht aufgenommen werden für Datenschutz Gründe. Abschnitte abspielen kann man nicht so gut lernen also macht man das am besten nur mit Klick auf die Note. Als Zusatz kann man auch von YouTube die Musik abspielen.
+- **End-to-End-Ablauf:** Ein Benutzer soll ein Notenblatt hochladen. Dieser wird in einer Liste angezeigt. Man kann dort auf ein beliebiges Notenblatt klicken. Notenblatt wird angezeigt. Wenn man auf die Note klickt, kommt der entsprechende Ton raus.  ![User-Journey](static/readme-pictures/User-Journey.png "User Journey")
+- **Mockup:** 
+  - Hier ist der Link zu Figma: https://www.figma.com/design/DZv40EIkbvJTUJ0ZfOhqbU/Tonhelfer-Mockup?node-id=0-1&t=HDbbFUvl4SaZReiU-1  
+  - Screenshots:  ![Anmelden-Mockup](static/readme-pictures/Tonhelfer%20Mockup.png "Tonhelfer Mockup")  Hier sind alle Mockups vom Projekt. Das Design ist sehr simpel gehalten. Registrieren gibt man alles nötige ein und dann auch für die Anmeldung, aber diese sind nicht nötig. Man kann auch direkt in die Liste und hochladen oder selbst eine Liste sehen. Man lädt Dateien hoch und sieht dann diese, wenn man es genauer anschauen will. 
 
 ### 3.4 Prototype
 
@@ -70,14 +86,23 @@ Fasst die technische Realisierung zusammen.
 - **Besondere Entscheidungen:** _[z. B. Trade-offs, Vereinfachungen]_  
 
 ### 3.5 Validate
-- **URL der getesteten Version** (separat deployt)
-- **Ziele der Prüfung:** _[welche Fragen sollen beantwortet werden?]_  
-- **Vorgehen:** _[moderiert/unmoderiert; remote/on-site]_  
-- **Stichprobe:** _[Mit wem wurde getestet? Profil; Anzahl]_  
-- **Aufgaben/Szenarien:** _[Ausformulierte Testaufgaben]_  
-- **Kennzahlen & Beobachtungen:** _[z. B. Erfolgsquote, Zeitbedarf, qualitative Findings]_  
-- **Zusammenfassung der Resultate:** _[Wichtigste Erkenntnisse; 2-4 Sätze]_  
-- **Abgeleitete Verbesserungen:** _[Anforderungen, die als nächstes umgesetzt werden sollten, priorisiert, kurz begründet; falls Verbesserungen im Prototyp konkret umgesetzt wurden: In Kap. 4 dokumentieren]_  
+- **URL der getesteten Version**: https://testing-tonhelfer.netlify.app/
+- **Ziele der Prüfung:** 
+  - Kann man sich registrieren?
+  - Kann man sich einloggen?
+  - Funktioniert der Upload und sieht man eine Liste?
+- **Vorgehen:** Es werden andere Personen auf die Seite zugreifen und den Prozess prüfen. Es muss nicht moderiert werden, aber es ist on-site. 
+- **Stichprobe:** Es gab zwei Testpersonen aus der Klasse TZBISa. Sie sind Studenten in derselben Klasse. 
+- **Aufgaben/Szenarien:** 
+  - Du und dein Freund beim Chor möchtet zuhause für ein Duett Stück trainieren, aber ihr habt keine Tonhilfe oder Instrumente zuhause.  
+    1. Ihr möchtet euch zusammen am Mittag treffen und zusammen die Duett Stelle trainieren, aber ihr habt keine Hilfe. Findet ein Tool, was euch dabei helfen könnte, dieses Problem zu umgehen.
+    2. Benutze dieses Tool, um das Problem zu umgehen.
+  - Ein Sänger aus einer Band konnte wegen einem Familiennotfall nicht zur Probe kommen. Sie wollte noch einen Teil ihres Textes üben.
+    1. Deine Band hat schon mit den Instrumenten geübt und deine Band hat vorgeschlagen deine Stelle mit einem Tool zum Töne Finden zu lernen. 
+    2. Schau, was die Band empfohlen hat und benutze dieses Tool.
+- **Kennzahlen & Beobachtungen:** Der Test ging schief. Man kann Dateien zum hochladen auswählen, aber es taucht ein Fehler auf und man sieht keinen Eintrag in der Liste. Das Registrieren und Anmelden funktioniert aber. Das Ganze geht sehr schnell und ist mit ein paar Klicks erledigt.  
+- **Zusammenfassung der Resultate:** Das Endprodukt muss noch verbessert werden. Man kann die Notenblätter nicht hochladen und sieht sie auch nicht in der Liste. Anmeldung und Registrierung funktioniert aber einwandfrei.  
+- **Abgeleitete Verbesserungen:** Als nächstes sollte man den Fehler zum Upload fixen, damit man eine Liste sieht und dann einen Notenblatt ansehen kann. Dieser soll dann auch einen Ton ausgeben, wenn man auf die Töen klickt.
 
 ## 4. Erweiterungen
 Dokumentiert Erweiterungen über den Mindestumfang hinaus.
