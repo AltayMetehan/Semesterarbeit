@@ -72,18 +72,18 @@ Die Durchführung erfolgt phasenbasiert; dokumentieren Sie die wichtigsten Ergeb
 #### 3.4.1. Entwurf (Design)
 Beschreibt die Gestaltung und Interaktion.
 > **Hinweis:** Hier wird der **Prototyp** beschrieben, nicht das **Mockup**.
-- **Informationsarchitektur:** _[z. B. Seiten/Navigation: Konzept, nicht die technische Umsetzung]_
+- **Informationsarchitektur:** Das Projekt geht um den Tonhelfer und die Liste ist die Hauptseite. Durch die Bootstrap Navigation kann man zur Registration gehen und danach sich dort auch anmelden. Durch Knopfdruck kommt man zum Upload oder auch zurück zur Liste. Die Detail Seite zeigt dann das Notenblatt und bietet auch die Tonhilfe und mit Knopfdruck kommt man immer zurück.
 - **User Interface Design:** _[wichtige Screens: Screenshots mit kurzen Erläuterungen]_  
-- **Designentscheidungen:** _[zentrale Entscheidungen und Begründungen]_
+- **Designentscheidungen:** Das Design wird sehr simpel gehalten, da ein Notenblatt schon sehr viele Details haben kann und die Seite soll nicht zu sehr designt sein. Ich halte es auch schwarz, weiss ausser den Hintergrund. Alles passt zum Notenblatt Thema und der Hintergrund braucht eine andere helle weissliche (Beige) Farbe, weil es sonst unübersichtlich wird.
 
 #### 3.4.2. Umsetzung (Technik)
 Fasst die technische Realisierung zusammen.
-- **Technologie-Stack:** _[SvelteKit, Bibliotheken falls genutzt]_
-- **Tooling:** _[IDE/Erweiterungen, lokale/Cloud-Tools; den Einsatz von KI beschreiben Sie im Kapitel **KI-Deklaration**]_  
-- **Struktur & Komponenten:** _[Seiten, Routen, State/Stores, wichtige Komponenten]_
-- **Daten & Schnittstellen:** _[Wie werden Daten gespeichert, verwaltet, abgerufen?]_
-- **Deployment:** _[URL]_  
-- **Besondere Entscheidungen:** _[z. B. Trade-offs, Vereinfachungen]_  
+- **Technologie-Stack:** Es wird SvelteKit benutzt und alles bleibt im Standard. Es wird goto benutzt, um von Registrierung zu Login zu leiten und von Login zur Liste. Eine Ausnahme wäre es den DNS zu verändern, weil es lokal sonst Probleme macht. Für das Backend wird MongoDB benutzt.
+- **Tooling:** In der IDE von Visual Studio Code wird die GitHub Erweiterung benutzt. Für das Backend wird MongoDB benutzt. Die Backend Eintröge werden in ein Cluster gemacht und der Connection String und mit MongoDB Compass wird dieses überprüft. 
+- **Struktur & Komponenten:** Es gibt die Seiten Upload, Register, Login, Home also die Liste und die Detailseite. Die Routen sind dementsprechend so kontruiert. Es gibt eine wichtige Komponente, die die Liste darstellen lassen kann. Diese werden auch als Props gespeichert.
+- **Daten & Schnittstellen:** Daten werden in MongoDB in einem Cluster gespeichert. Mit der Connection String verbindet man sich. In db.js werden alle Daten erstellt und geholt.
+- **Deployment:** https://tonhelfer.netlify.app/ 
+- **Besondere Entscheidungen:** Ich habe mich dazu entschieden, dass der YouTube Link optional ist, da es für die Abgabe leichter macht und urheberrechtlich weiss ich nicht, ob man das einfach so abspielen kann. 
 
 ### 3.5 Validate
 - **URL der getesteten Version**: https://testing-tonhelfer.netlify.app/
